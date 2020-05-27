@@ -2,8 +2,11 @@
 
 body {
     font-family: 'Convergence', sans-serif;
+    font-size: 20px;
     //background-color: #222222;
     //color: #d5d5d5;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 #io {
@@ -19,13 +22,9 @@ body {
     scroll-padding: 25%;
 }
 
-//#input-line {
-//    display: -webkit-box;
-//    -webkit-box-orient: horizontal;
-//    -webkit-box-align: stretch;
-//}
-
 #input {
+    color: inherit;
+    font-size: inherit;
     outline: none;
     border: none;
     background-color: transparent;

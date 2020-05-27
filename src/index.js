@@ -30,7 +30,10 @@ input.on('blur',function () {
 $(document).keypress(e => {
     let key = keyNames[e.charCode];
     if (key === 'enter') {
-        if (config[currentRoom].options[input.val()] === undefined) {
+        if (input.val() === 'clear') {
+            output.html('');
+            input.val('');
+        } else if (config[currentRoom].options[input.val()] === undefined) {
             // outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options)}`);
             outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options).map(v => ' <b>' + v + '</b>')}`);
         } else {
