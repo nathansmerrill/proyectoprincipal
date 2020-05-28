@@ -33,6 +33,7 @@ $(document).keypress(e => {
         if (input.val() === 'clear') {
             output.html('');
             input.val('');
+            printRoomText();
         } else if (config[currentRoom].options[input.val()] === undefined) {
             // outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options)}`);
             outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options).map(v => ' <b>' + v + '</b>')}`);
