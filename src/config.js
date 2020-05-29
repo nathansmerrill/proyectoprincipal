@@ -1,9 +1,10 @@
 export default {
     'start': {
-        text: 'hi this is the starting room. Do you want to <b>stuff</b> or <b>second stuff</b>',
+        text: `Cuando abriste tus ojos cansados, viste un cuarto tenue que tiene
+        dos puertos, un <b>grande</b>, y un <b>pequeño</b>`,
         options: {
-            'stuff': 'armorRoom',
-            'second stuff': 'room2'
+            'grande': 'armorRoom',
+            'pequeño': 'room2'
         }
     },
     'armorRoom': {

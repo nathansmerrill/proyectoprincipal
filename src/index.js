@@ -1,6 +1,5 @@
 import $ from 'jquery';
 
-import {keyNames} from "./common";
 import config from './config';
 import './main.scss';
 
@@ -28,8 +27,7 @@ input.on('blur',function () {
 });
 
 $(document).keypress(e => {
-    let key = keyNames[e.charCode];
-    if (key === 'enter') {
+    if (e.charCode === 13) { // Enter
         if (input.val() === 'clear') {
             output.html('');
             input.val('');
