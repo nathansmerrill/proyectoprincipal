@@ -8,7 +8,7 @@ export default {
         }
     },
     'armorRoom': {
-        text: 'This is the armor room',
+        text: 'This is the armor room test',
         options: {}
     },
     'room2': {
