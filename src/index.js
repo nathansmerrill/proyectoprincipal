@@ -14,7 +14,11 @@ function outputAppend(text) {
 }
 
 function printRoomText() {
-    outputAppend(config[currentRoom].text);
+    let text = config[currentRoom].text;
+    if (typeof text === 'function') {
+        text = text();
+    }
+    outputAppend(text);
 }
 
 printRoomText();
@@ -27,16 +31,25 @@ input.on('blur',function () {
 });
 
 $(document).keypress(e => {
+    let options = config[currentRoom].options;
+    if (typeof options === 'function') {
+        options = options();
+    }
     if (e.charCode === 13) { // Enter
         if (input.val() === 'clear') {
             output.html('');
             input.val('');
             printRoomText();
-        } else if (config[currentRoom].options[input.val()] === undefined) {
+        } else if (options[input.val()] === undefined) {
             // outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options)}`);
-            outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options).map(v => ' <b>' + v + '</b>')}`);
+            outputAppend(`Invalid option. The valid options are ${Object.keys(options).map(v => ' <b>' + v + '</b>')}`);
         } else {
-            currentRoom = config[currentRoom].options[input.val()];
+            let option = options[input.val()];
+            if (typeof option === 'function') {
+                option = option();
+            }
+            currentRoom = option;
+            outputAppend('> ' + input.val());
             input.val('');
             printRoomText();
         }
