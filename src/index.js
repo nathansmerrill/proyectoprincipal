@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import config from './config';
-import './main.scss';
+import './main.css';
 
 const output = $('#output');
 const input = $('#input');
