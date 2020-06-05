@@ -93,7 +93,7 @@ export default {
         text: `Cuando entras por la puerta, ves el interior de un ascensor. 
         Entras más en la ascensor, y la puerta se cierra perfectamente detrás de tu. 
         Sientes un aceleración leve, y ves rocas móviles afuera de la ventana. 
-        Por fin, las puertas se abren y caminas bajo en sol cegador. 
+        Por fin, las puertas se abren y caminas bajo en sol cegador. ¡tú ganas! 
         Si queres probar un final otra, escribe <b>reinciar</b>.`,
         options: {
             'reinciar': restart
