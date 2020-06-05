@@ -53,13 +53,6 @@ export default {
                 'continúas': 'win'
         }
     },
-    'roomAfterSmall': {
-        text: () => (state.knife
-        ? `die`
-        : `survive`
-        ),
-        options: {}
-    },
     'bigRoom': {
         text: `Entras a una cuarto grande, al menos en comparación de tu entorno claustrofóbico.
         En la pared, ves pinturas primitivas, pero son muy pequeñas y no tienes tus lentes. 
