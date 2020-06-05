@@ -1,6 +1,15 @@
-let state = {
+const defaultState = {
     knife: false
 };
+
+let state = {};
+Object.assign(state, defaultState);
+
+function restart() {
+    state = {};
+    Object.assign(state, defaultState);
+    return 'start';
+}
 
 export default {
     'start': {
@@ -13,12 +22,14 @@ export default {
     },
     'smallRoom': {
         text: () => (state.knife
-        ? `<b>Entras</b> por la puerta.`
+//        ? `<b>Entras</b> por la puerta.`
+        ? `<b>Sales</b> por donde viniste, o <b>continúas?`
         : `Caminas por la puerta grande a una cuarto extrañamente pequeña.
         En el suelo, ves un cuchillo oxidado. ¿Lo <b>recoges</b> para defenderte o <b>dejas?</b>.`),
         options: () => (state.knife
         ? {
-                'entras': 'roomAfterSmall'
+                'sales': 'start',
+                'continúas': 'lose1'
         }
         : {
                 'recoges': 'smallRoomKnife',
@@ -32,14 +43,14 @@ export default {
         },
         options: {
             'sales': 'start',
-            'continúas': 'roomAfterSmall'
+            'continúas': 'lose1'
         }
     },
     'smallRoomNoKnife': {
         text: `¿No ecoges el cuchillo, <b>sales</b> por donde viniste, o <b>continúas?</b>`,
         options: {
-            'sales': 'start',
-            'continúas': 'roomAfterSmall'
+                'sales': 'start',
+                'continúas': 'win'
         }
     },
     'roomAfterSmall': {
@@ -54,16 +65,41 @@ export default {
         En la pared, ves pinturas primitivas, pero son muy pequeñas y no tienes tus lentes. 
         ¿Vas a la puerta de la <b>izquierda</b>, o la <b>derecha</b>?`,
         options: {
-            'izquierda': 'bigRoomLeft',
-            'derecha': 'bigRoomRight'
+            'izquierda': 'lose2',
+            'derecha': 'lose3'
         }
     },
-    'bigRoomLeft': {
-        text: `you go left`,
-        options: {}
+    'lose1': {
+        text: `Cuando entras la cuarto, escuchas un fuerta "BAM". Las paredes
+        se derrumban sobre tú. Tu cuchillo es Juego inútil y estás machacado.
+        Juego terminado, escribe <b>reinciar</b> para jugar otra vez.`,
+        options: {
+            'reinciar': restart
+        }
     },
-    'bigRoomRight': {
-        text: `you go right`,
-        options: {}
+    'lose2': {
+        text: `Entras por la puerta izquierda a una cuarto desnuda.
+        Caminas más lejo, pero aún no pasa nada.
+        De repente, sientes una cuerda a tu pie. ¡Un cuerda de trampa!
+        Con un clic mecánico, la habitación se llena de agua y te ahogas.
+        Juego terminado, escribe <b>reinciar</b> para jugar otra vez.`,
+        options: {
+            'reinciar': restart
+        }
     },
+    'lose3': {
+        text: `La puerta derecha está cubierta de vides, pero tiras los lejos de la puerta.
+        Cuando finalmente abres la puerta y entras, el suelo es de papel y rasaga debajo 
+        de tus pies. Mientras tu caes, piensas la decisión que la puerta derecha, hasta que 
+        chocas el fondo. Juego terminado, escribe <b>reinciar</b> para jugar otra vez.`,
+        options: {
+            'reinciar': restart
+        }
+    },
+    'win': {
+        text: `u win`,
+        options: {
+            'reinciar': restart
+        }
+    }
 };

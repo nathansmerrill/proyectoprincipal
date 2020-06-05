@@ -21,6 +21,9 @@ function printRoomText() {
     outputAppend(text);
 }
 
+outputAppend(`Bienvenido a mi proyecto principal, que es un juego adventura de texto. 
+Para continuar, escribas una de las opciones <b>negritas</b>. A calquier tiempo, 
+escriba <b>quitar</b> para borrar la pantalla. Buena suerte!<br><br>`);
 printRoomText();
 
 input.on('blur',function () {
@@ -36,7 +39,7 @@ $(document).keypress(e => {
         options = options();
     }
     if (e.charCode === 13) { // Enter
-        if (input.val() === 'clear') {
+        if (input.val() === 'borrar') {
             output.html('');
             input.val('');
             printRoomText();
