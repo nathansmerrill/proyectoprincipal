@@ -23,7 +23,7 @@ function printRoomText() {
 
 outputAppend(`Bienvenido a mi proyecto principal, que es un juego adventura de texto. 
 Para continuar, escribas una de las opciones <b>negritas</b>. A calquier tiempo, 
-escriba <b>quitar</b> para borrar la pantalla. Buena suerte!<br><br>`);
+escriba <b>borrar</b> para borrar la pantalla. Buena suerte!<br><br>`);
 printRoomText();
 
 input.on('blur',function () {
@@ -45,7 +45,8 @@ $(document).keypress(e => {
             printRoomText();
         } else if (options[input.val()] === undefined) {
             // outputAppend(`Invalid option. The valid options are ${Object.keys(config[currentRoom].options)}`);
-            outputAppend(`Invalid option. The valid options are ${Object.keys(options).map(v => ' <b>' + v + '</b>')}`);
+            // outputAppend(`Invalid option. The valid options are ${Object.keys(options).map(v => ' <b>' + v + '</b>')}`);
+            outputAppend(`Opción no válida, escriba ${Object.keys(options).map(v => ' <b>' + v + '</b>')}`);
         } else {
             let option = options[input.val()];
             if (typeof option === 'function') {
